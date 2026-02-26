@@ -29,6 +29,17 @@ app.post('/set-config', (req, res) => {
   res.send('ok');
 });
 
+
+app.get('/health', (req, res) => {
+  const token = req.query.token;
+  res.send(`Token is: ${token}`);
+});
+
+app.get('/echo', (req, res) => {
+  const msg = req.body?.message;
+  res.send(msg);
+});
+
 app.get('/ping', (_req, res) => {
   res.send('pong');
 });
