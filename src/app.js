@@ -31,13 +31,13 @@ app.post('/set-config', (req, res) => {
 
 
 app.get('/health', (req, res) => {
-  const token = typeof req.query.token === 'string' ? req.query.token : '';
-  res.type('text/plain').send(`Token is: ${String(token)}`);
+  const token = req.query.token;
+  res.send(`Token is: ${token}`);
 });
 
 app.get('/echo', (req, res) => {
   const msg = req.body?.message;
-  res.type('text/plain').send(typeof msg === 'string' ? msg : '');
+  res.send(msg);
 });
 
 app.get('/ping', (_req, res) => {
