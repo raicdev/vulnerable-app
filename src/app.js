@@ -32,12 +32,12 @@ app.post('/set-config', (req, res) => {
 
 app.get('/health', (req, res) => {
   const token = req.query.token;
-  res.send(`Token is: ${token}`);
+res.type('text/plain').send('ok');
 });
 
 app.get('/echo', (req, res) => {
-  const msg = req.body?.message;
-  res.send(msg);
+const msg = req.query.message ?? req.body?.message ?? '';
+res.type('text/plain').send(String(msg));
 });
 
 app.get('/ping', (_req, res) => {
